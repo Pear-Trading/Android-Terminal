@@ -5,7 +5,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -13,18 +12,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.trade.barter.api.ApiDoohickey;
-import com.trade.barter.api.ApiTransaction;
+import com.trade.barter.api.ApiManager;
 import com.trade.barter.utils.DatabaseHandler;
 import com.trade.barter.utils.Redeem;
 import com.trade.barter.utils.Transaction;
 import com.trade.barter.utils.TransactionAdapter;
 import com.trade.barter.utils.Utils;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -136,17 +130,17 @@ public class SyncActivity extends ListActivity {
                     }
 
                     if(allRedeems.size() > 0){
-                        ApiDoohickey.getInstance().uploadRedeems(dialog,allRedeems,noTransactions,this);
+                        ApiManager.getInstance().uploadRedeems(dialog,allRedeems,noTransactions,this);
                     }
 
                     if(transactionsPositions.size() != 0){
                         dialog.show();
-                        ApiDoohickey.getInstance().uploadTransactions(dialog,transactionsPositions,transactions,this);
+                        ApiManager.getInstance().uploadTransactions(dialog,transactionsPositions,transactions,this);
                     }
                     else{
                         if(transactions.size() != 0){
                             dialog.show();
-                            ApiDoohickey.getInstance().uploadTransactions(dialog,null,transactions,this);
+                            ApiManager.getInstance().uploadTransactions(dialog,null,transactions,this);
                         }
                         else{
                             noTransactions = true;

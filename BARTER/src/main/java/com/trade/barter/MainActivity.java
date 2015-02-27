@@ -20,7 +20,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.trade.barter.api.ApiDoohickey;
+import com.trade.barter.api.ApiManager;
 import com.trade.barter.utils.DatabaseHandler;
 import com.trade.barter.utils.Redeem;
 import com.trade.barter.utils.Transaction;
@@ -627,15 +627,15 @@ public class MainActivity extends Activity {
             transactions = db.getTransactions();
 
             if(allRedeems.size() > 0){
-            	ApiDoohickey.getInstance().uploadRedeems(uploadDialog,allRedeems,false,null);
+            	ApiManager.getInstance().uploadRedeems(uploadDialog,allRedeems,false,null);
             }
 
             if(transactions.size() != 0){
                 uploadDialog.show();
-                ApiDoohickey.getInstance().uploadAllTransactions(uploadDialog,transactions);
+                ApiManager.getInstance().uploadAllTransactions(uploadDialog,transactions);
             }
             else{
-                ApiDoohickey.getInstance().getSync(uploadDialog);
+                ApiManager.getInstance().getSync(uploadDialog);
             }
         }
     }

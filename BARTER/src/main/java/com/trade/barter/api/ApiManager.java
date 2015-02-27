@@ -27,22 +27,22 @@ import com.trade.barter.utils.Transaction;
 import com.trade.barter.utils.TransactionAdapter;
 import com.trade.barter.utils.Utils;
 
-public class ApiDoohickey {
+public class ApiManager {
 	
 	private SharedPreferences sharedPreferences;
 	private DatabaseHandler db;
-	private static ApiDoohickey instance;
+	private static ApiManager instance;
 	
-	public static ApiDoohickey getInstance()
+	public static ApiManager getInstance()
 	{
 		if(instance==null)
 		{
-			instance=new ApiDoohickey(MainActivity.getContext().getSharedPreferences(MainActivity.getContext().getString(R.string.preferences), 0));
+			instance=new ApiManager(MainActivity.getContext().getSharedPreferences(MainActivity.getContext().getString(R.string.preferences), 0));
 		}
 		return instance;
 	}
 	
-	private ApiDoohickey(SharedPreferences sharedPreferences)
+	private ApiManager(SharedPreferences sharedPreferences)
 	{
 		this.sharedPreferences=sharedPreferences;
 		db = new DatabaseHandler(MainActivity.getContext());
@@ -143,7 +143,7 @@ public class ApiDoohickey {
         }.executeOnExecutor(AsyncTask.SERIAL_EXECUTOR, params);
     }
 	
-	//TODO: THIS SEEMS TO BE UNUSED. There is some commented out code in Redeem Activity that references the old method. If we need it, we need to put ApiDoohickey().getInstance(). in front.
+	//TODO: THIS SEEMS TO BE UNUSED. There is some commented out code in Redeem Activity that references the old method. If we need it, we need to put ApiManager().getInstance(). in front.
 	public void uploadRedeem(Dialog dialog,final Redeem redeem){
         JSONArray jsonArrayRedeem = new JSONArray();
         JSONObject redeemJson = new JSONObject();
