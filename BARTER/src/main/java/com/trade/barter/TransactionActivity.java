@@ -27,6 +27,7 @@ import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -138,33 +139,32 @@ public class TransactionActivity extends Activity implements LocationListener, G
             checkLocation();
         }
 
-        findViewById(R.id.recordTransactionBtn).setOnClickListener(new View.OnClickListener() {
+        final Button recordTransButton = (Button) findViewById(R.id.recordTransactionBtn);
+        recordTransButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                recordTransButton.setEnabled(false);
                 //get the data to be saved in the database
-                points = (int)((RatingBar) findViewById(R.id.transactionRatingBar)).getRating();
+                points = (int) ((RatingBar) findViewById(R.id.transactionRatingBar)).getRating();
 
                 Log.d("TEST", "Rating " + points);
 
                 String priceString = ((EditText) findViewById(R.id.transactionValue)).getText().toString();
                 price = 0.00;
-                if(priceString.length() > 0){
+                if (priceString.length() > 0) {
                     price = Utils.convertPrice(priceString);
                 }
 
                 ToggleButton goodsBtn = (ToggleButton) findViewById(R.id.goodsToggle);
                 ToggleButton servicesBtn = (ToggleButton) findViewById(R.id.servicesToggle);
 
-                if(goodsBtn.isChecked() && !servicesBtn.isChecked()){
+                if (goodsBtn.isChecked() && !servicesBtn.isChecked()) {
                     type = "goods";
-                }
-                else if (!goodsBtn.isChecked() && servicesBtn.isChecked()){
+                } else if (!goodsBtn.isChecked() && servicesBtn.isChecked()) {
                     type = "services";
-                }
-                else if(goodsBtn.isChecked() && servicesBtn.isChecked()){
+                } else if (goodsBtn.isChecked() && servicesBtn.isChecked()) {
                     type = "both";
-                }
-                else{
+                } else {
                     Toast.makeText(view.getContext(), "Please select at least one transaction type.", Toast.LENGTH_LONG).show();
                     return;
                 }
@@ -176,15 +176,13 @@ public class TransactionActivity extends Activity implements LocationListener, G
                 //get the last known location
                 getLocation();
 
-                if(!shareLocation){
+                if (!shareLocation) {
                     db.addTransaction(new Transaction(settings.getString("cardId", null), nfcCardID, 0.00, 0.00, type, trans_type, price, points, Utils.getCurrentDate(), false));
                     Log.d(getString(R.string.app_name), "location null");
-                }
-                else{
-                    if(currentLocation==null){
+                } else {
+                    if (currentLocation == null) {
                         db.addTransaction(new Transaction(settings.getString("cardId", null), nfcCardID, 0.00, 0.00, type, trans_type, price, points, Utils.getCurrentDate(), false));
-                    }
-                    else{
+                    } else {
                         db.addTransaction(new Transaction(settings.getString("cardId", null), nfcCardID, currentLocation.getLatitude(), currentLocation.getLongitude(), type, trans_type, price, points, Utils.getCurrentDate(), false));
                     }
                 }
