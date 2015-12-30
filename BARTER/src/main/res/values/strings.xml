@@ -117,5 +117,21 @@
     <!-- Dialog Strings -->
     <string name="confirm_dialog_default_connection_warning">Please make sure you have a data connection (Wi-Fi or Mobile Network)</string>
     <string name="confirm_dialog_default_title">SYNC TERMINAL DATA</string>
+    <string name="edit_profile_main_personal_details">Personal Details</string>
+    <string name="edit_profile_main_hint_name">name</string>
+    <string name="edit_profile_main_hint_email">e-mail address</string>
+    <string name="edit_profile_main_hint_postcode">post code</string>
+    <string name="edit_profile_main_text_male">Male</string>
+    <string name="edit_profile_main_text_female">Female</string>
+    <string name="edit_profile_main_text_dob">d.o.b</string>
+    <string name="edit_profile_main_text_ethics">Ethical Preference</string>
+    <string name="edit_profile_main_text_trading">Trading Sector</string>
+    <string name="edit_profile_main_text_manufacturer">Manufacturer</string>
+    <string name="edit_profile_main_text_service">Service</string>
+    <string name="edit_profile_main_text_retail">Retail</string>
+    <string name="edit_profile_main_text_trade_type">Trader Type</string>
+    <string name="edit_profile_main_text_move">On the Move</string>
+    <string name="edit_profile_main_text_fixed">Fixed</string>
+    <string name="edit_profile_main_text_save">SAVE</string>
 
 </resources>
