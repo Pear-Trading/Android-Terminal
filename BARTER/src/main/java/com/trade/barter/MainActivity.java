@@ -243,7 +243,6 @@ public class MainActivity extends Activity {
                 startActivity(new Intent(this, StatsActivity.class));
                 break;
             case R.id.manual_sync:
-                //TODO This causes a null pointer exception for the actual sync run - something about the dialog being null
                 manualSync();
                 break;
             case R.id.support_menu:
