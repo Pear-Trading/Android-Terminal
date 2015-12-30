@@ -20,7 +20,7 @@
 
 
     <LinearLayout
-            android:id="@+id/LL_Seperator"
+            android:id="@+id/LL_Separator"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/pale_yellow"
@@ -35,7 +35,7 @@
             android:id="@+id/alertDialogImage"
             android:src="@drawable/card_icon"
             android:paddingLeft="10dp"
-            android:layout_below="@+id/LL_Seperator"
+            android:layout_below="@+id/LL_Separator"
             android:layout_alignBottom="@+id/alertDialogDesc2"
             android:focusable="false"/>
 
@@ -57,7 +57,7 @@
             android:id="@+id/alertDialogDesc"
             android:textSize="20sp"
             android:paddingTop="10dp"
-            android:layout_below="@+id/LL_Seperator"
+            android:layout_below="@+id/LL_Separator"
             android:layout_toRightOf="@+id/alertDialogImage"
             android:textColor="@color/charcoal_gray"
             android:singleLine="false"/>

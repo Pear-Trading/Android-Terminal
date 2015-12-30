@@ -6,7 +6,7 @@
     android:background="@color/light_grey">
 
     <LinearLayout
-        android:id="@+id/LL_Seperator"
+        android:id="@+id/LL_Separator"
         android:layout_width="match_parent"
         android:layout_height="5dp"
         android:background="@color/charcoal_gray"
@@ -207,7 +207,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/toggleButton"
                     android:layout_below="@+id/textView3"
-                    android:background="@drawable/manufacterer_toggle_icon"
+                    android:background="@drawable/manufacturer_toggle_icon"
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginStart="10dp"/>

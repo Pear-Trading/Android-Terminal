@@ -20,7 +20,7 @@
 
 
     <LinearLayout
-            android:id="@+id/LL_Seperator"
+            android:id="@+id/LL_Separator"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/barter_green"
@@ -37,7 +37,7 @@
             android:id="@+id/confirmDialogDesc"
             android:textSize="18sp"
             android:paddingTop="10dp"
-            android:layout_below="@+id/LL_Seperator"
+            android:layout_below="@+id/LL_Separator"
             android:textColor="@color/charcoal_gray"
             android:singleLine="false"/>
 
