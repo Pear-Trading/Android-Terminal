@@ -96,15 +96,15 @@
     <string name="manual_sync_footer">Please make sure you have a data connection (Wi-Fi or Mobile Network)</string>
 
     <!-- API URLs -->
-    <string name="support_url"         >http://app.peartrade.org/mobile/support.html</string>
-    <string name="about_url"           >http://app.peartrade.org/mobile/about.html</string>
-    <string name="login_url"           >"http://app.peartrade.org/api/mobile_terminal/login.php"</string>
-    <string name="upload_url"          >"http://app.peartrade.org/api/mobile_terminal/uploadTransactions.php"</string>
-    <string name="auto_manual_sync_url">"http://app.peartrade.org/api/mobile_terminal/uploadTransactionsForceSync.php"</string>
-    <string name="get_sync_data"       >"http://app.peartrade.org/api/mobile_terminal/requestSync.php"</string>
-    <string name="redeem_url"          >"http://app.peartrade.org/api/mobile_terminal/uploadRedeems.php"</string>
-    <string name="sign_up_url"         >"http://app.peartrade.org/api/"</string>
-    <string name="profile_url"         >"http://app.peartrade.org/mobile/profile.php"</string>
+    <string name="support_url"         >https://app.peartrade.org/mobile/support.html</string>
+    <string name="about_url"           >https://app.peartrade.org/mobile/about.html</string>
+    <string name="login_url"           >https://app.peartrade.org/api/mobile_terminal/login.php</string>
+    <string name="upload_url"          >https://app.peartrade.org/api/mobile_terminal/uploadTransactions.php</string>
+    <string name="auto_manual_sync_url">https://app.peartrade.org/api/mobile_terminal/uploadTransactionsForceSync.php</string>
+    <string name="get_sync_data"       >https://app.peartrade.org/api/mobile_terminal/requestSync.php</string>
+    <string name="redeem_url"          >https://app.peartrade.org/api/mobile_terminal/uploadRedeems.php</string>
+    <string name="sign_up_url"         >https://app.peartrade.org/api/</string>
+    <string name="profile_url"         >https://app.peartrade.org/mobile/profile.php</string>
 
     <!-- Button Text -->
     <string name="accept">Accept</string>
