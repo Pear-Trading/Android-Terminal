@@ -25,8 +25,6 @@
     <string name="are_you_sure">Are you sure you want to resync your data from the server to the terminal?</string>
     <string name="please_make_sure">Please make sure you have a data connection (Wi-Fi or Mobile Network)</string>
     <string name="please_note">This will only update the data for your consumers and their totals. It will not delete any transaction data from your terminal. </string>
-    <string name="ok">OK</string>
-    <string name="cancel">CANCEL</string>
     <string name="signin_text">This application can only be used by registered users. Please login below with the email address and password you registered with BARTER.</string>
     <string name="login">Log in</string>
     <string name="signup">Sign up</string>
@@ -107,5 +105,17 @@
     <string name="redeem_url"          >"http://app.peartrade.org/api/mobile_terminal/uploadRedeems.php"</string>
     <string name="sign_up_url"         >"http://app.peartrade.org/api/"</string>
     <string name="profile_url"         >"http://app.peartrade.org/mobile/profile.php"</string>
+
+    <!-- Button Text -->
+    <string name="accept">Accept</string>
+    <string name="deny">Deny</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+
+    <!-- Dialog Strings -->
+    <string name="confirm_dialog_default_connection_warning">Please make sure you have a data connection (Wi-Fi or Mobile Network)</string>
+    <string name="confirm_dialog_default_title">SYNC TERMINAL DATA</string>
 
 </resources>

@@ -565,7 +565,7 @@ public class MainActivity extends Activity {
         });
 
         Button okBtn = (Button) dialogLayout.findViewById(R.id.okBtn);
-        okBtn.setText("YES");
+        okBtn.setText(R.string.yes);
         okBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -591,7 +591,7 @@ public class MainActivity extends Activity {
         ((TextView) dialogLayout.findViewById(R.id.confirmDialogFooterDesc)).setText(getString(R.string.manual_sync_footer));
 
         Button cancelBtn = (Button) dialogLayout.findViewById(R.id.cancelBtn);
-        cancelBtn.setText("Deny");
+        cancelBtn.setText(R.string.deny);
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -600,7 +600,7 @@ public class MainActivity extends Activity {
         });
 
         Button okBtn = (Button) dialogLayout.findViewById(R.id.okBtn);
-        okBtn.setText("Accept");
+        okBtn.setText(R.string.accept);
         okBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
