@@ -55,7 +55,7 @@ public class ApiManager {
         params[0] = MainActivity.getContext().getString(R.string.get_sync_data);
         params[1] = dataToSend;
 
-        new ApiTransaction(c, null){
+        new ApiTransaction(c, dialog){
         	@Override
             protected void result(JSONObject data) throws Exception{
                 Log.i(MainActivity.getContext().getString(R.string.app_name), "All transactions have been successfully uploaded to the database");
