@@ -34,7 +34,9 @@ public class SigninActivity extends Activity {
 
                 password = Utils.md5(password);
                 //verify the network connection - if successful login the trader
-                if(Utils.checkConnectivity(getApplicationContext())) ApiManager.getInstance().loginTrader(SigninActivity.this,email,password);
+                if(Utils.checkConnectivity(getApplicationContext())) {
+                    new ApiManager(getApplicationContext()).loginTrader(SigninActivity.this, email, password);
+                }
             }
         });
 

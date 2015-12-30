@@ -10,6 +10,7 @@ import org.json.JSONObject;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -31,22 +32,13 @@ public class ApiManager {
 	
 	private SharedPreferences sharedPreferences;
 	private DatabaseHandler db;
-	private static ApiManager instance;
-	
-	public static ApiManager getInstance()
-	{
-		if(instance==null)
-		{
-			instance=new ApiManager(MainActivity.getContext().getSharedPreferences(MainActivity.getContext().getString(R.string.preferences), 0));
-		}
-		return instance;
-	}
-	
-	private ApiManager(SharedPreferences sharedPreferences)
-	{
-		this.sharedPreferences=sharedPreferences;
-		db = new DatabaseHandler(MainActivity.getContext());
-	}
+    private Context c;
+
+    public ApiManager(Context c) {
+        this.c = c;
+        sharedPreferences = c.getSharedPreferences(c.getString(R.string.preferences), 0);
+        db = new DatabaseHandler(c);
+    }
 	
 	public void getSync(Dialog dialog){
 
@@ -63,7 +55,7 @@ public class ApiManager {
         params[0] = MainActivity.getContext().getString(R.string.get_sync_data);
         params[1] = dataToSend;
 
-        new ApiTransaction(null){
+        new ApiTransaction(c, null){
         	@Override
             protected void result(JSONObject data) throws Exception{
                 Log.i(MainActivity.getContext().getString(R.string.app_name), "All transactions have been successfully uploaded to the database");
@@ -111,7 +103,7 @@ public class ApiManager {
         params[0] = MainActivity.getContext().getString(R.string.auto_manual_sync_url);
         params[1] = jsonArrayTransaction.toString();
 
-        new ApiTransaction(dialog){
+        new ApiTransaction(c, dialog){
 
 			@Override
 			protected void result(JSONObject data) throws Exception {
@@ -163,7 +155,7 @@ public class ApiManager {
         params[0] = MainActivity.getContext().getString(R.string.redeem_url);
         params[1] = jsonArrayRedeem.toString();
 
-        new ApiTransaction(dialog){
+        new ApiTransaction(c, dialog){
 
 			@Override
 			protected void result(JSONObject data) throws Exception {
@@ -207,7 +199,7 @@ public class ApiManager {
         params[0] = MainActivity.getContext().getString(R.string.redeem_url);
         params[1] = jsonArrayRedeems.toString();
 
-        new ApiTransaction(dialog){
+        new ApiTransaction(c, dialog){
 
 			@Override
 			protected void result(JSONObject data) throws Exception {
@@ -253,14 +245,14 @@ public class ApiManager {
             traderLogin.put("email", email);
             traderLogin.put("password", password);
         } catch (Exception e) {
-            Log.i("Exception while uploading the trader's credentials", e.getMessage());
+            Log.i("info", "Exception while uploading the trader's credentials: " + e.getMessage());
         }
 
         String[] params = new String[2];
-        params[0] = MainActivity.getContext().getString(R.string.login_url);
+        params[0] = c.getString(R.string.login_url);
         params[1] = traderLogin.toString();
 
-        new ApiTransaction(dialog){
+        new ApiTransaction(c, dialog){
 
 			@Override
 			protected void result(JSONObject data) throws Exception {
@@ -334,7 +326,7 @@ public class ApiManager {
                     Log.e(MainActivity.getContext().getString(R.string.app_name), e.getMessage());
                 }
 			}
-        	
+
         }.executeOnExecutor(AsyncTask.SERIAL_EXECUTOR, params);
     }
 	
@@ -362,7 +354,7 @@ public class ApiManager {
         	params[2] = "selected";
         }
 
-        new ApiTransaction(dialog){
+        new ApiTransaction(c, dialog){
 
 			@Override
 			protected void result(JSONObject data) throws Exception {

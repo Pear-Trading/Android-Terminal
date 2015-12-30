@@ -13,6 +13,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONObject;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
@@ -25,10 +26,12 @@ public abstract class ApiTransaction extends AsyncTask<String,Void,String> {
     protected String result;
     protected InputStream is;
     protected Dialog dialog;
+    private Context c;
 
-    public ApiTransaction(Dialog dialog)
+    public ApiTransaction(Context c, Dialog dialog)
     {
     	this.dialog=dialog;
+        this.c=c;
     }
     
     @Override
@@ -84,17 +87,17 @@ public abstract class ApiTransaction extends AsyncTask<String,Void,String> {
             if(received){
                 result(allData);
                 dialog.dismiss();
-                Toast.makeText(MainActivity.getContext().getApplicationContext(), "All data has been successfully synced.", Toast.LENGTH_LONG).show();
+                Toast.makeText(c, "All data has been successfully synced.", Toast.LENGTH_LONG).show();
             }
             else{
                 Log.e(MainActivity.getContext().getString(R.string.app_name), "There was a problem during the sync operation." + allData.getJSONArray("notEntered"));
                 dialog.dismiss();
-                Toast.makeText(MainActivity.getContext(), "There was a problem during the sync operation. Please try again later.", Toast.LENGTH_LONG).show();
+                Toast.makeText(c, "There was a problem during the sync operation. Please try again later.", Toast.LENGTH_LONG).show();
             }
         }
         catch (Exception e) {
             dialog.dismiss();
-            Log.e(MainActivity.getContext().getString(R.string.app_name), e.getMessage());
+            Log.e(c.getString(R.string.app_name), e.getMessage());
         }
     }
     

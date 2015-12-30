@@ -75,7 +75,7 @@ public class MainActivity extends Activity {
         settings = this.getSharedPreferences(getString(R.string.preferences), 0);
         editor = settings.edit();
         
-        NFCState.check(this);       
+        NFCState.check(this);
 
         Button syncButton = createButton(R.id.activityBtn,font,switchActivityListener(SyncActivity.class));
         Button profileButton = createButton(R.id.profileBtn,font,switchActivityListener(ProfileActivity.class));
@@ -243,6 +243,7 @@ public class MainActivity extends Activity {
                 startActivity(new Intent(this, StatsActivity.class));
                 break;
             case R.id.manual_sync:
+                //TODO This causes a null pointer exception for the actual sync run - something about the dialog being null
                 manualSync();
                 break;
             case R.id.support_menu:
@@ -627,15 +628,15 @@ public class MainActivity extends Activity {
             transactions = db.getTransactions();
 
             if(allRedeems.size() > 0){
-            	ApiManager.getInstance().uploadRedeems(uploadDialog,allRedeems,false,null);
+            	new ApiManager(getApplicationContext()).uploadRedeems(uploadDialog, allRedeems, false, null);
             }
 
             if(transactions.size() != 0){
                 uploadDialog.show();
-                ApiManager.getInstance().uploadAllTransactions(uploadDialog,transactions);
+                new ApiManager(getApplicationContext()).uploadAllTransactions(uploadDialog,transactions);
             }
             else{
-                ApiManager.getInstance().getSync(uploadDialog);
+                new ApiManager(getApplicationContext()).getSync(uploadDialog);
             }
         }
     }

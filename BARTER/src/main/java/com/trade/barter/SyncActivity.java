@@ -130,17 +130,17 @@ public class SyncActivity extends ListActivity {
                     }
 
                     if(allRedeems.size() > 0){
-                        ApiManager.getInstance().uploadRedeems(dialog,allRedeems,noTransactions,this);
+                        new ApiManager(getApplicationContext()).uploadRedeems(dialog,allRedeems,noTransactions,this);
                     }
 
                     if(transactionsPositions.size() != 0){
                         dialog.show();
-                        ApiManager.getInstance().uploadTransactions(dialog,transactionsPositions,transactions,this);
+                        new ApiManager(getApplicationContext()).uploadTransactions(dialog, transactionsPositions, transactions, this);
                     }
                     else{
                         if(transactions.size() != 0){
                             dialog.show();
-                            ApiManager.getInstance().uploadTransactions(dialog,null,transactions,this);
+                            new ApiManager(getApplicationContext()).uploadTransactions(dialog, null, transactions, this);
                         }
                         else{
                             noTransactions = true;
