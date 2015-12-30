@@ -130,11 +130,11 @@ public class MainActivity extends Activity {
 
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
      
-        if (interactionType == "transaction")
+        if (interactionType.equals("transaction"))
         {
             dialog.setView(getLayoutInflater().inflate(R.layout.alert_dialog, null));
         }
-        else if (interactionType == "redeem")
+        else if (interactionType.equals("redeem"))
         {
             dialog.setView(getLayoutInflater().inflate(R.layout.alert_dialog_redeem, null));
         }
