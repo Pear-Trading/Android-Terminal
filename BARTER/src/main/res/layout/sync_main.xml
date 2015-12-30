@@ -55,7 +55,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
             android:textSize="40sp"
-            android:textColor="@color/charcole_gray"
+            android:textColor="@color/charcoal_gray"
             android:layout_alignTop="@+id/imageView"
             android:layout_alignBottom="@+id/imageView"
             android:gravity="center_vertical|center_horizontal" />

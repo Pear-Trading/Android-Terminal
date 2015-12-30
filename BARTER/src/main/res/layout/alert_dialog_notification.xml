@@ -38,7 +38,7 @@
             android:textSize="20sp"
             android:paddingTop="10dp"
             android:layout_below="@+id/LL_Seperator"
-            android:textColor="@color/charcole_gray"
+            android:textColor="@color/charcoal_gray"
             android:singleLine="false"/>
 
     <LinearLayout
@@ -91,7 +91,7 @@
             android:id="@+id/confirmDialogDesc2"
             android:layout_below="@+id/confirmDialogDesc"
             android:layout_alignParentLeft="true"
-            android:textColor="@color/charcole_gray"
+            android:textColor="@color/charcoal_gray"
             android:textSize="16sp"
             />
 

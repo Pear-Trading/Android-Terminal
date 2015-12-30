@@ -38,7 +38,7 @@
             android:textSize="18sp"
             android:paddingTop="10dp"
             android:layout_below="@+id/LL_Seperator"
-            android:textColor="@color/charcole_gray"
+            android:textColor="@color/charcoal_gray"
             android:singleLine="false"/>
 
     <LinearLayout
@@ -70,7 +70,7 @@
         android:layout_below="@+id/confirmDialogDesc"
         android:layout_alignLeft="@+id/confirmDialogDesc"
         android:layout_alignRight="@+id/confirmDialogTitle"
-        android:textColor="@color/charcole_gray"
+        android:textColor="@color/charcoal_gray"
         android:background="@drawable/textfield_focused_holo_dark"
         android:hint="CARD NUMBER"
         android:layout_marginTop="10dp"

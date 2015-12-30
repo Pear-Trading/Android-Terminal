@@ -92,7 +92,7 @@ public class MainActivity extends Activity {
             }
         });
 
-        getActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.charcole_gray)));
+        getActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.charcoal_gray)));
 
         try {
             if(settings.getBoolean("firstLogin", false) == false){

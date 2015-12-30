@@ -4,7 +4,7 @@
     <item android:state_pressed="true">
         <shape>
             <solid android:color="@color/barter_green" />
-            <stroke android:width="2px" android:color="@color/charcole_gray" />
+            <stroke android:width="2px" android:color="@color/charcoal_gray" />
             <corners android:radius="5dp" />
 
         </shape>
@@ -13,7 +13,7 @@
     <item android:state_focused="true" >
         <shape>
             <solid android:color="@color/barter_green" />
-            <stroke android:width="2px" android:color="@color/charcole_gray" />
+            <stroke android:width="2px" android:color="@color/charcoal_gray" />
             <corners android:radius="5dp" />
 
         </shape>
@@ -22,7 +22,7 @@
     <item>
         <shape>
             <solid android:color="@color/orange" />
-            <stroke android:width="2px" android:color="@color/charcole_gray" />
+            <stroke android:width="2px" android:color="@color/charcoal_gray" />
             <corners android:radius="5dp" />
         </shape>
     </item>

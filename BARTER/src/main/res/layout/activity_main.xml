@@ -9,7 +9,7 @@
                 android:id="@+id/LL_Seperator"
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
-                android:background="@color/charcole_gray"
+                android:background="@color/charcoal_gray"
                 android:orientation="horizontal" >
         </LinearLayout>
 

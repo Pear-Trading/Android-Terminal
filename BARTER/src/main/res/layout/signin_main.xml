@@ -56,7 +56,7 @@
                     android:text="@string/signin_text"
                     android:id="@+id/signinText"
                     android:layout_alignParentLeft="true"
-                    android:textColor="@color/charcole_gray"
+                    android:textColor="@color/charcoal_gray"
                     android:layout_below="@+id/linearLayout2"
                     android:layout_marginTop="10dp"/>
 
@@ -68,7 +68,7 @@
                     android:layout_centerVertical="true"
                     android:hint="e-mail "
                     android:textCursorDrawable="@null"
-                    android:textColor="@color/charcole_gray"
+                    android:textColor="@color/charcoal_gray"
                     android:layout_below="@+id/signinText"
                     android:layout_alignLeft="@+id/linearLayout2"
                     android:layout_alignRight="@+id/linearLayout2"
@@ -82,7 +82,7 @@
                     android:id="@+id/signinPasswordInput"
                     android:hint="password"
                     android:textCursorDrawable="@null"
-                    android:textColor="@color/charcole_gray"
+                    android:textColor="@color/charcoal_gray"
                     android:inputType="textPassword"
                     android:layout_below="@+id/signinEmailInput"
                     android:layout_alignLeft="@+id/linearLayout2"
