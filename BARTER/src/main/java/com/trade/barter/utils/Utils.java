@@ -20,8 +20,6 @@ import java.util.Date;
  */
 public class Utils {
 
-    private static String salt = "a7y3ttk7go";
-
     public static String ByteArrayToHexString(byte [] inarray)
     {
         int i, j, in;
