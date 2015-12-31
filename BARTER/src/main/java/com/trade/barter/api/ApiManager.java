@@ -46,19 +46,19 @@ public class ApiManager {
         try {
             traderJson.put("trader_id", sharedPreferences.getString("cardId", null));
         } catch (Exception e) {
-            Log.e(MainActivity.getContext().getString(R.string.app_name), "JSON exception from consumer's data");
+            Log.e(c.getString(R.string.app_name), "JSON exception from consumer's data");
         }
 
         String dataToSend = traderJson.toString();
 
         String[] params = new String[2];
-        params[0] = MainActivity.getContext().getString(R.string.get_sync_data);
+        params[0] = c.getString(R.string.get_sync_data);
         params[1] = dataToSend;
 
         new ApiTransaction(c, dialog){
         	@Override
             protected void result(JSONObject data) throws Exception{
-                Log.i(MainActivity.getContext().getString(R.string.app_name), "All transactions have been successfully uploaded to the database");
+                Log.i(c.getString(R.string.app_name), "All transactions have been successfully uploaded to the database");
 
                 JSONArray consumersToBeUpdated = data.getJSONArray("customerData");
                 JSONObject traderStats = data.getJSONObject("traderTotals");
@@ -71,7 +71,7 @@ public class ApiManager {
                 updateTraderStats(traderStats);
 
                 dialog.dismiss();
-                Toast.makeText(MainActivity.getContext().getApplicationContext(), "All data has been successfully synced.", Toast.LENGTH_LONG).show();       
+                Toast.makeText(c.getApplicationContext(), "All data has been successfully synced.", Toast.LENGTH_LONG).show();
             }
         }.executeOnExecutor(AsyncTask.SERIAL_EXECUTOR, params);
     }
@@ -93,21 +93,21 @@ public class ApiManager {
                 transactionJson.put("trans_points", transaction.getPoints());
                 transactionJson.put("trans_time", transaction.getTimestamp());
             } catch (Exception e) {
-                Log.e(MainActivity.getContext().getString(R.string.app_name), "JSON exception from consumer's data");
+                Log.e(c.getString(R.string.app_name), "JSON exception from consumer's data");
             }
 
             jsonArrayTransaction.put(transactionJson);
         }
 
         String[] params = new String[2];
-        params[0] = MainActivity.getContext().getString(R.string.auto_manual_sync_url);
+        params[0] = c.getString(R.string.auto_manual_sync_url);
         params[1] = jsonArrayTransaction.toString();
 
         new ApiTransaction(c, dialog){
 
 			@Override
 			protected void result(JSONObject data) throws Exception {
-				Log.i(MainActivity.getContext().getString(R.string.app_name), "All transactions have been successfully uploaded to the database");
+				Log.i(c.getString(R.string.app_name), "All transactions have been successfully uploaded to the database");
 
                 for(Iterator<Transaction> it = transactions.iterator(); it.hasNext();){
                     Transaction transaction = it.next();
@@ -129,7 +129,7 @@ public class ApiManager {
                 updateTraderStats(traderStats);
 
                 dialog.dismiss();
-                Toast.makeText(MainActivity.getContext(), "All transactions have been successfully uploaded.", Toast.LENGTH_LONG).show();
+                Toast.makeText(c, "All transactions have been successfully uploaded.", Toast.LENGTH_LONG).show();
 			}
         	
         }.executeOnExecutor(AsyncTask.SERIAL_EXECUTOR, params);
@@ -146,25 +146,25 @@ public class ApiManager {
             redeemJson.put("points_deducted", redeem.getPointsDeducted());
             redeemJson.put("redeem_timestamp", redeem.getTimestamp());
         } catch (Exception e) {
-            Log.e(MainActivity.getContext().getString(R.string.app_name), "JSON exception from redeem data.");
+            Log.e(c.getString(R.string.app_name), "JSON exception from redeem data.");
         }
 
         jsonArrayRedeem.put(redeemJson);
 
         String[] params = new String[3];
-        params[0] = MainActivity.getContext().getString(R.string.redeem_url);
+        params[0] = c.getString(R.string.redeem_url);
         params[1] = jsonArrayRedeem.toString();
 
         new ApiTransaction(c, dialog){
 
 			@Override
 			protected void result(JSONObject data) throws Exception {
-				Log.i(MainActivity.getContext().getString(R.string.app_name), "Redeem has been successfully added to the database!");
+				Log.i(c.getString(R.string.app_name), "Redeem has been successfully added to the database!");
 
                 db.updateRedeemStatus(redeem.getRedeemID());
 
                 dialog.dismiss();
-                Toast.makeText(MainActivity.getContext(), "Your option was saved!.", Toast.LENGTH_LONG).show();
+                Toast.makeText(c, "Your option was saved!.", Toast.LENGTH_LONG).show();
 				
 			}
         	
@@ -187,23 +187,23 @@ public class ApiManager {
                 redeemJson.put("redeem_timestamp", redeem.getTimestamp());
 
             } catch (Exception e) {
-                Log.e(MainActivity.getContext().getString(R.string.app_name), "JSON exception from redeem data.");
+                Log.e(c.getString(R.string.app_name), "JSON exception from redeem data.");
             }
 
-            Log.i(MainActivity.getContext().getString(R.string.app_name), "Type: " + redeem.getRedeemType());
+            Log.i(c.getString(R.string.app_name), "Type: " + redeem.getRedeemType());
 
             jsonArrayRedeems.put(redeemJson);
         }
 
         String[] params = new String[2];
-        params[0] = MainActivity.getContext().getString(R.string.redeem_url);
+        params[0] = c.getString(R.string.redeem_url);
         params[1] = jsonArrayRedeems.toString();
 
         new ApiTransaction(c, dialog){
 
 			@Override
 			protected void result(JSONObject data) throws Exception {
-				Log.i(MainActivity.getContext().getString(R.string.app_name), "All redeems have been successfully uploaded to the database.");
+				Log.i(c.getString(R.string.app_name), "All redeems have been successfully uploaded to the database.");
 
                 Redeem redeem;
 
@@ -219,9 +219,9 @@ public class ApiManager {
 
                 ((TextView) MainActivity.getInstance().findViewById(R.id.textView2)).setText("0");
                 dialog.dismiss();
-                Toast.makeText(MainActivity.getContext(), "All redeems have been successfully uploaded to the database.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(c, "All redeems have been successfully uploaded to the database.", Toast.LENGTH_SHORT).show();
             	if(noTransactions) {
-                    syncActivity.startActivity(new Intent(MainActivity.getContext(), MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                    syncActivity.startActivity(new Intent(c, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                     syncActivity.finish();
                 }
 			}
@@ -269,7 +269,7 @@ public class ApiManager {
                     editor.putString("gender", traderDetails.getString("gender"));
                     editor.putString("dob", traderDetails.getString("dob"));
                     editor.putString("email", email);
-                    editor.putString("password", Utils.md5(password)); //TODO: -------------------------- Why does this need to be saved to shared preferences? Hashed or otherwise? It is already hashed too...
+                    editor.putString("password", password);
                     editor.putString("postcode", traderDetails.getString("postcode"));
                     editor.putString("preferences", traderDetails.getString("preferences"));
                     editor.putBoolean("isManufacturer", Utils.convertIntToBoolean(traderDetails.getInt("isManufacturer")));
@@ -318,12 +318,12 @@ public class ApiManager {
 
                     dialog.dismiss();
 
-                    signinActivity.startActivity(new Intent(MainActivity.getContext(), MainActivity.class));
+                    signinActivity.startActivity(new Intent(c, MainActivity.class));
                     signinActivity.finish();
 
                 } catch (Exception e) {
                     dialog.dismiss();
-                    Log.e(MainActivity.getContext().getString(R.string.app_name), e.getMessage());
+                    Log.e(c.getString(R.string.app_name), e.getMessage());
                 }
 			}
 
@@ -336,7 +336,7 @@ public class ApiManager {
         JSONArray jsonArrayTransaction = new JSONArray();
 
         final String[] params = new String[3];
-        params[0] = MainActivity.getContext().getString(R.string.upload_url);
+        params[0] =c.getString(R.string.upload_url);
         if(transactionsPositions==null)
         {
         	for(Transaction transaction : transactions){
@@ -358,8 +358,8 @@ public class ApiManager {
 
 			@Override
 			protected void result(JSONObject data) throws Exception {
-				Log.i(MainActivity.getContext().getString(R.string.app_name), "All transactions have been successfully uploaded to the database");
-                syncActivity.startActivity(new Intent(MainActivity.getContext().getApplicationContext(), MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+				Log.i(c.getString(R.string.app_name), "All transactions have been successfully uploaded to the database");
+                syncActivity.startActivity(new Intent(c.getApplicationContext(), MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                 syncActivity.finish();
 
                 if(params[2].equals("selected")){
@@ -395,7 +395,7 @@ public class ApiManager {
                 transactionAdapter.notifyDataSetChanged();
 
                 dialog.dismiss();
-                Toast.makeText(MainActivity.getContext(), "All selected transactions have been successfully uploaded.", Toast.LENGTH_LONG).show();
+                Toast.makeText(c, "All selected transactions have been successfully uploaded.", Toast.LENGTH_LONG).show();
 			}
         	
         }.executeOnExecutor(AsyncTask.SERIAL_EXECUTOR, params);
@@ -416,7 +416,7 @@ public class ApiManager {
             transactionJson.put("trans_points", transaction.getPoints());
             transactionJson.put("trans_time", transaction.getTimestamp());
         } catch (Exception e) {
-            Log.e(MainActivity.getContext().getString(R.string.app_name), "JSON exception from transaction data.");
+            Log.e(c.getString(R.string.app_name), "JSON exception from transaction data.");
         }
         return transactionJson;
 	}

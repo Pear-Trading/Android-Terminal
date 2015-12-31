@@ -28,11 +28,6 @@ public class SigninActivity extends Activity {
                 String email = ((EditText) findViewById(R.id.signinEmailInput)).getText().toString();
                 String password = ((EditText) findViewById(R.id.signinPasswordInput)).getText().toString();
 
-                //dummy credentials
-//                email = "marklochrie50265@gmail.com";
-//                password = "g00gle";
-
-                password = Utils.md5(password);
                 //verify the network connection - if successful login the trader
                 if(Utils.checkConnectivity(getApplicationContext())) {
                     new ApiManager(getApplicationContext()).loginTrader(SigninActivity.this, email, password);
