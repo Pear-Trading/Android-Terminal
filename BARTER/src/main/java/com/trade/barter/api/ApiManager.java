@@ -267,7 +267,6 @@ public class ApiManager {
                     editor.putString("name", traderDetails.getString("name"));
                     editor.putString("cardId", traderDetails.getString("cardId"));
                     editor.putString("gender", traderDetails.getString("gender"));
-                    editor.putString("dob", traderDetails.getString("dob"));
                     editor.putString("email", email);
                     editor.putString("password", password);
                     editor.putString("postcode", traderDetails.getString("postcode"));
